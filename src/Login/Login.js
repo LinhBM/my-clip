@@ -2,7 +2,7 @@ import Svg from "./Svg";
 
 function Login() {
   return (
-    <div className="font-sans relative w-[480px] h-[716px] bg-[#000000] border border-solid border-[#141414] rounded-2xl mx-auto top-0 right-0 bottom-0 left-0">
+    <div className="font-inter relative w-[480px] h-[716px] bg-[#000000] border border-solid border-[#141414] rounded-2xl mx-auto top-0 right-0 bottom-0 left-0">
       <div className="absolute w-6 h-6 top-4 right-4">
         <Svg.Close />
       </div>
@@ -26,6 +26,9 @@ function Login() {
               <Svg.ShowPass />
             </div>
           </div>
+          <p className="text-[#FF3B30] font-normal text-xs leading-[18px] text-center -mt-6">
+            Số điện thoại hoặc mật khẩu chưa chính xác.
+          </p>
           <div className="flex w-full gap-3">
             <input
               className="w-[177px] px-4 py-[9.5px] h-10 rounded-[10px] bg-[#141414] placeholder-[#8A8B93] text-[#8A8B93] text-base font-normal outline-none"
@@ -36,9 +39,15 @@ function Login() {
               <Svg.Reset />
             </div>
           </div>
-          <button
+          {/* <button
             type="submit"
             className="bg-[#272728] text-[#47474D] w-full h-10 rounded-[10px] text-base font-bold tracking-[-0.408px]"
+          >
+            Đăng nhập
+          </button> */}
+          <button
+            type="submit"
+            className="bg-[#00B6A0] text-[#ffffff] w-full h-10 rounded-[10px] text-base font-bold tracking-[-0.408px]"
           >
             Đăng nhập
           </button>
