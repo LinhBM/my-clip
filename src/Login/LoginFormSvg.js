@@ -4,13 +4,13 @@ function form() {
       <input
         type="text"
         placeholder="Số điện thoại"
-        className="w-full px-4 py-[9.5px] h-10 rounded-[10px] bg-[#141414] placeholder-[#8A8B93] text-[#8A8B93] text-base font-normal"
+        className="w-full px-4 py-[9.5px] h-10 rounded-[10px] bg-[#141414] placeholder-[#8A8B93] text-[#8A8B93] text-base font-normal outline-none"
       />
-      <div className="relative">
+      <div className="relative after:content-['sdf'] after">
         <input
           type="text"
           placeholder="********"
-          className="w-full px-4 py-[9.5px] h-10 rounded-[10px] bg-[#141414] placeholder-[#8A8B93] text-[#8A8B93] text-base font-normal pr-16"
+          className="w-full px-4 py-[9.5px] h-10 rounded-[10px] bg-[#141414] placeholder-[#8A8B93] text-[#8A8B93] text-base font-normal pr-16 outline-none"
         />
         <div className="absolute bottom-0 right-0 w-16 h-10 flex justify-center items-center">
           <svg
@@ -39,14 +39,14 @@ function form() {
       </div>
       <div className="flex w-full gap-3">
         <input
-          className="w-[177px] px-4 py-[9.5px] h-10 rounded-[10px] bg-[#141414] placeholder-[#8A8B93] text-[#8A8B93] text-base font-normal"
+          className="w-[177px] px-4 py-[9.5px] h-10 rounded-[10px] bg-[#141414] placeholder-[#8A8B93] text-[#8A8B93] text-base font-normal outline-none"
           placeholder="Mã captcha"
         />
         <div className="bg-white w-[132px] h-10 rounded-[10px]"></div>
         <div className="flex-1 flex justify-center items-center">
           <svg
-            width="22"
-            height="18"
+            width="24"
+            height="24"
             viewBox="0 0 22 18"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -62,9 +62,15 @@ function form() {
           </svg>
         </div>
       </div>
-      <button
+      {/* <button
         type="submit"
         className="bg-[#272728] text-[#47474D] w-full h-10 rounded-[10px] text-base font-bold tracking-[-0.408px]"
+      >
+        Đăng nhập
+      </button> */}
+      <button
+        type="submit"
+        className="bg-[#00B6A0] text-[#ffffff] w-full h-10 rounded-[10px] text-base font-bold tracking-[-0.408px]"
       >
         Đăng nhập
       </button>
