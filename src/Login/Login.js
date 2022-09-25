@@ -1,6 +1,11 @@
+import { useEffect, useState } from "react";
 import Svg from "./Svg";
 
 function Login() {
+  const [data, setData] = useState();
+  const obj = ["linhdeptrai"];
+  console.log(typeof data);
+
   return (
     <div className="font-inter relative w-[480px] h-[716px] bg-[#000000] border border-solid border-[#141414] rounded-2xl mx-auto top-0 right-0 bottom-0 left-0">
       <div className="absolute w-6 h-6 top-4 right-4">
@@ -21,14 +26,25 @@ function Login() {
               type="text"
               placeholder="********"
               className="w-full px-4 py-[9.5px] h-10 rounded-[10px] bg-[#141414] placeholder-[#8A8B93] text-[#8A8B93] text-base font-normal pr-16 outline-none after:content-['sdf'] after"
+              onChange={(e) => setData(e.target.value)}
             />
             <div className="absolute bottom-0 right-0 w-16 h-10 flex justify-center items-center">
               <Svg.ShowPass />
             </div>
           </div>
-          <p className="text-[#FF3B30] font-normal text-xs leading-[18px] text-center -mt-6">
-            Số điện thoại hoặc mật khẩu chưa chính xác.
-          </p>
+          {obj.map((get, index) => {
+            if (data === get) {
+              return (
+                <p
+                  key={index}
+                  className="text-[#FF3B30] font-normal text-xs leading-[18px] text-center -mt-6"
+                >
+                  Số điện thoại hoặc mật khẩu chưa chính xác.
+                </p>
+              );
+            }
+          })}
+
           <div className="flex w-full gap-3">
             <input
               className="w-[177px] px-4 py-[9.5px] h-10 rounded-[10px] bg-[#141414] placeholder-[#8A8B93] text-[#8A8B93] text-base font-normal outline-none"
@@ -39,15 +55,15 @@ function Login() {
               <Svg.Reset />
             </div>
           </div>
-          {/* <button
+          <button
             type="submit"
             className="bg-[#272728] text-[#47474D] w-full h-10 rounded-[10px] text-base font-bold tracking-[-0.408px]"
           >
             Đăng nhập
-          </button> */}
+          </button>
           <button
             type="submit"
-            className="bg-[#00B6A0] text-[#ffffff] w-full h-10 rounded-[10px] text-base font-bold tracking-[-0.408px]"
+            className="bg-[#00B6A0] text-[#ffffff] w-full h-10 rounded-[10px] text-base font-bold tracking-[-0.408px] hidden"
           >
             Đăng nhập
           </button>
