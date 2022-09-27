@@ -1,10 +1,33 @@
 import { useEffect, useState } from "react";
 import Svg from "./Svg";
+import InternetStatus from "./InternetStatus";
+
+const checkOnline = () => {
+  if (window.navigator.onLine) {
+    return (
+      <button
+        type="submit"
+        className="bg-[#00B6A0] text-[#ffffff] w-full h-10 rounded-[10px] text-base font-bold tracking-[-0.408px]"
+      >
+        Đăng nhập
+      </button>
+    );
+  } else {
+    return (
+      <button
+        type="submit"
+        className="bg-[#272728] text-[#47474D] w-full h-10 rounded-[10px] text-base font-bold tracking-[-0.408px]"
+      >
+        Đăng nhập
+      </button>
+    );
+  }
+};
 
 function Login() {
   const [data, setData] = useState();
-  const obj = ["linhdeptrai"];
-  console.log(typeof data);
+  const obj = ["linhdeptrai", "sdf"];
+  console.log(typeof obj);
 
   return (
     <div className="font-inter relative w-[480px] h-[716px] bg-[#000000] border border-solid border-[#141414] rounded-2xl mx-auto top-0 right-0 bottom-0 left-0">
@@ -55,18 +78,7 @@ function Login() {
               <Svg.Reset />
             </div>
           </div>
-          <button
-            type="submit"
-            className="bg-[#272728] text-[#47474D] w-full h-10 rounded-[10px] text-base font-bold tracking-[-0.408px]"
-          >
-            Đăng nhập
-          </button>
-          <button
-            type="submit"
-            className="bg-[#00B6A0] text-[#ffffff] w-full h-10 rounded-[10px] text-base font-bold tracking-[-0.408px] hidden"
-          >
-            Đăng nhập
-          </button>
+          <InternetStatus />
         </form>
         <span className="text-[#B0B0B8] not-italic font-normal text-base tracking-[-0.408px]">
           Hoặc đăng nhập bằng
