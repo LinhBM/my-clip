@@ -30,7 +30,7 @@ function Login() {
   console.log(typeof obj);
 
   return (
-    <div className="font-inter relative w-[480px] h-[716px] bg-[#000000] border border-solid border-[#141414] rounded-2xl mx-auto top-0 right-0 bottom-0 left-0">
+    <div className="font-inter absolute w-[480px] h-[716px] bg-[#000000] border border-solid border-[#141414] rounded-2xl m-auto top-0 right-0 bottom-0 left-0">
       <div className="absolute w-6 h-6 top-4 right-4">
         <Svg.Close />
       </div>
