@@ -1,11 +1,28 @@
 import { useEffect, useState } from "react";
 import Svg from "./Svg";
 import InternetStatus from "./InternetStatus";
+import { type } from "@testing-library/user-event/dist/type";
 
 function Login() {
-  const [data, setData] = useState();
-  const obj = ["linhdeptrai", "sdf"];
-  console.log(typeof obj);
+  const [inputPass, setinputPass] = useState();
+  const demoPass = ["linhdeptrai"];
+  const numberOnly = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const [inputLogin, setinputLogin] = useState([]);
+
+  const btnLogin = () => {
+    let index = 0;
+    numberOnly.map((number) => {
+      for (let i = 0; i < inputLogin.length; i++) {
+        if (number === +inputLogin[i]) {
+          index++;
+        }
+      }
+    });
+
+    if (index !== inputLogin.length) {
+      return alert("Phải nhập số điện thoại");
+    }
+  };
 
   return (
     <div className="font-inter absolute w-[480px] h-[716px] bg-[#000000] border border-solid border-[#141414] rounded-2xl m-auto top-0 right-0 bottom-0 left-0">
@@ -16,25 +33,26 @@ function Login() {
         Đăng nhập
       </h2>
       <div className="flex flex-col items-center w-[369px] h-[565px] absolute mt-8 left-[55.5px] gap-10">
-        <form className="w-full flex flex-col gap-10">
+        <form className="w-full flex flex-col gap-10" onSubmit={btnLogin}>
           <input
             type="text"
             placeholder="Số điện thoại"
             className="w-full px-4 py-[9.5px] h-10 rounded-[10px] bg-[#141414] placeholder-[#8A8B93] text-[#8A8B93] text-base font-normal outline-none"
+            onChange={(e) => setinputLogin(e.target.value)}
           />
           <div className="relative">
             <input
               type="text"
               placeholder="********"
               className="w-full px-4 py-[9.5px] h-10 rounded-[10px] bg-[#141414] placeholder-[#8A8B93] text-[#8A8B93] text-base font-normal pr-16 outline-none after:content-['sdf'] after"
-              onChange={(e) => setData(e.target.value)}
+              onChange={(e) => setinputPass(e.target.value)}
             />
             <div className="absolute bottom-0 right-0 w-16 h-10 flex justify-center items-center">
               <Svg.ShowPass />
             </div>
           </div>
-          {obj.map((get, index) => {
-            if (data === get) {
+          {demoPass.map((get, index) => {
+            if (inputPass === get) {
               return (
                 <p
                   key={index}

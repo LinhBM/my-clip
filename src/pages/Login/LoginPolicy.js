@@ -2,8 +2,8 @@ import React from "react";
 
 function LoginPolicy() {
   return (
-    <div className="absolute top-0 right-0 bottom-0 left-0 w-[800px] h-[640px] bg-[#141414] m-auto rounded-xl border border-solid border-[#272728]">
-      <h2 className="text-[#ffffff] text-xl font-bold not-italic leading-6 flex justify-center mt-5 font-inter tracking-[-0.26px]">
+    <div className="absolute top-0 right-0 bottom-0 left-0 w-[800px] h-[640px] bg-[#141414] m-auto rounded-xl border border-solid border-[#272728] flex flex-col items-center">
+      <h2 className="text-[#ffffff] text-xl h-6 font-bold not-italic leading-6 mt-5 font-inter tracking-[-0.26px]">
         Điều khoản sử dụng
       </h2>
       <div className="w-[752px] h-[444px] bg-[#ffffff] border border-solid border-[#282727] rounded-[8px] mt-5 left-0 right-0 mx-auto overflow-hidden">
@@ -81,9 +81,15 @@ function LoginPolicy() {
           hạn, quyền lợi liên quan khi sử dụng trên TV360.
         </div>
       </div>
-      <div className="w-[752px] h-10 font-inter not-italic font-normal text-xs leading-[18px] text-[#8A8B93] text-center left-0 right-0 mx-auto">
-        fff
-      </div>
+      <p className="w-[752px] h-10 font-inter not-italic font-normal text-xs leading-[18px] text-[#8A8B93] left-0 right-0 mx-auto flex items-center justify-center mt-4">
+        Bằng việc đăng nhập, bạn đã đồng ý với&nbsp;
+        <span className="text-[#FFD130]">Điều khoản sử dụng của Myclip.</span>
+      </p>
+      <button className="w-[200px] h-10 flex flex-row justify-center items-center py-3 px-5 gap-2 bg-[#00B6A0] rounded-[10px] text-">
+        <p className="font-inter not-italic font-bold text-base leading-[21px] tracking-[-0.408px] text-[#ffffff]">
+          Đồng ý
+        </p>
+      </button>
     </div>
   );
 }
