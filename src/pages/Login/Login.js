@@ -42,7 +42,7 @@ function Login() {
           />
           <div className="relative">
             <input
-              type="text"
+              type="password"
               placeholder="********"
               className="w-full px-4 py-[9.5px] h-10 rounded-[10px] bg-[#141414] placeholder-[#8A8B93] text-[#8A8B93] text-base font-normal pr-16 outline-none after:content-['sdf'] after"
               onChange={(e) => setinputPass(e.target.value)}
