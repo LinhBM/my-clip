@@ -9,7 +9,8 @@ function Login() {
   const numberOnly = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   const [inputLogin, setinputLogin] = useState([]);
 
-  const btnLogin = () => {
+  const loginPhone = (e) => {
+    setinputLogin(e);
     let index = 0;
     numberOnly.map((number) => {
       for (let i = 0; i < inputLogin.length; i++) {
@@ -24,6 +25,25 @@ function Login() {
     }
   };
 
+  const createCaptcha = () => {
+    const captchaNumber = [];
+    const captchaUpcase = [];
+    const captchaLowcase = [];
+    for (let i = 48; i < 58; i++) captchaNumber.push(+String.fromCharCode(i));
+    for (let i = 65; i < 91; i++) captchaUpcase.push(String.fromCharCode(i));
+    for (let i = 97; i < 123; i++) captchaLowcase.push(String.fromCharCode(i));
+
+    const captchaArr = [...captchaNumber, ...captchaUpcase, ...captchaLowcase];
+    const captchaCreate = [];
+
+    for (let i = 0; i < 6; i++)
+      captchaCreate.push(
+        captchaArr[Math.floor(Math.random() * captchaArr.length)]
+      );
+
+    return captchaCreate;
+  };
+
   return (
     <div className="font-inter absolute w-[480px] h-[716px] bg-[#000000] border border-solid border-[#141414] rounded-2xl m-auto top-0 right-0 bottom-0 left-0">
       <div className="absolute w-6 h-6 top-4 right-4">
@@ -33,12 +53,12 @@ function Login() {
         Đăng nhập
       </h2>
       <div className="flex flex-col items-center w-[369px] h-[565px] absolute mt-8 left-[55.5px] gap-10">
-        <form className="w-full flex flex-col gap-10" onSubmit={btnLogin}>
+        <form className="w-full flex flex-col gap-10" onSubmit={loginPhone}>
           <input
             type="text"
             placeholder="Số điện thoại"
             className="w-full px-4 py-[9.5px] h-10 rounded-[10px] bg-[#141414] placeholder-[#8A8B93] text-[#8A8B93] text-base font-normal outline-none"
-            onChange={(e) => setinputLogin(e.target.value)}
+            onChange={(e) => loginPhone(e.target.value)}
           />
           <div className="relative">
             <input
@@ -69,10 +89,14 @@ function Login() {
               className="w-[177px] px-4 py-[9.5px] h-10 rounded-[10px] bg-[#141414] placeholder-[#8A8B93] text-[#8A8B93] text-base font-normal outline-none"
               placeholder="Mã captcha"
             />
-            <div className="bg-white w-[132px] h-10 rounded-[10px]"></div>
-            <div className="flex-1 flex justify-center items-center">
-              <Svg.Reset />
+            <div className="bg-white w-[132px] h-10 rounded-[10px] flex justify-center items-center">
+              <span className="tracking-[6px] text-[21px] font-badscript font-bold">
+                {createCaptcha()}
+              </span>
             </div>
+            <button className="flex-1 flex justify-center items-center">
+              <Svg.Reset />
+            </button>
           </div>
           <InternetStatus />
         </form>
