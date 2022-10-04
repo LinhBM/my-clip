@@ -14,6 +14,9 @@ const Layout = () => {
           <li>
             <Link to="/loginforgetpass">Forget Password</Link>
           </li>
+          <li>
+            <Link to="/loginlinkaccount">login link account</Link>
+          </li>
         </ul>
       </nav>
       <Outlet />

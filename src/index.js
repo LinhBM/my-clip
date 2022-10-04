@@ -10,22 +10,24 @@ import NoPage from "./pages/NoPage";
 import Login from "./pages/Login/Login";
 import LoginPolicy from "./pages/Login/LoginPolicy";
 import LoginForgetPass from "./pages/Login/LoginForgetPass";
+import LoginLinkAccount from "./pages/Login/LoginLinkAccount";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    {/* <Provider store={store}> */}
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Login />} />
-          <Route path="loginpolicy" element={<LoginPolicy />} />
-          <Route path="loginforgetpass" element={<LoginForgetPass />} />
-          <Route path="*" element={<NoPage />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-    {/* </Provider> */}
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Login />} />
+            <Route path="loginpolicy" element={<LoginPolicy />} />
+            <Route path="loginforgetpass" element={<LoginForgetPass />} />
+            <Route path="loginlinkaccount" element={<LoginLinkAccount />} />
+            <Route path="*" element={<NoPage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
 
