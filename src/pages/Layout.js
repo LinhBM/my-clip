@@ -11,6 +11,9 @@ const Layout = () => {
           <li>
             <Link to="/loginpolicy">LoginPolicy</Link>
           </li>
+          <li>
+            <Link to="/loginforgetpass">Forget Password</Link>
+          </li>
         </ul>
       </nav>
       <Outlet />

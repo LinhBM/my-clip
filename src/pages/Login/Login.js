@@ -2,30 +2,32 @@ import { useEffect, useState } from "react";
 import Svg from "./Svg";
 import InternetStatus from "./InternetStatus";
 import { type } from "@testing-library/user-event/dist/type";
+import { useDispatch } from "react-redux";
 
 function Login() {
-  const [inputPass, setinputPass] = useState();
+  // const dispatch = useDispatch();
+  const [phoneState, setphoneState] = useState([]);
+  const [passState, setpassState] = useState();
   const demoPass = ["linhdeptrai"];
-  const numberOnly = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  const [inputLogin, setinputLogin] = useState([]);
+  const numberPhone = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-  const loginPhone = (e) => {
-    setinputLogin(e);
+  const funLogin = (e) => {
     let index = 0;
-    numberOnly.map((number) => {
-      for (let i = 0; i < inputLogin.length; i++) {
-        if (number === +inputLogin[i]) {
+    numberPhone.map((number) => {
+      for (let i = 0; i < phoneState.length; i++) {
+        if (number === +phoneState[i]) {
           index++;
         }
       }
     });
 
-    if (index !== inputLogin.length) {
+    if (index !== phoneState.length) {
+      document.querySelector(".phoneState").value = "";
       return alert("Phải nhập số điện thoại");
     }
   };
 
-  const createCaptcha = () => {
+  const captchaCreate = () => {
     const captchaNumber = [];
     const captchaUpcase = [];
     const captchaLowcase = [];
@@ -33,15 +35,19 @@ function Login() {
     for (let i = 65; i < 91; i++) captchaUpcase.push(String.fromCharCode(i));
     for (let i = 97; i < 123; i++) captchaLowcase.push(String.fromCharCode(i));
 
-    const captchaArr = [...captchaNumber, ...captchaUpcase, ...captchaLowcase];
-    const captchaCreate = [];
+    const captchaTotal = [
+      ...captchaNumber,
+      ...captchaUpcase,
+      ...captchaLowcase,
+    ];
+    const captchaResult = [];
 
     for (let i = 0; i < 6; i++)
-      captchaCreate.push(
-        captchaArr[Math.floor(Math.random() * captchaArr.length)]
+      captchaResult.push(
+        captchaTotal[Math.floor(Math.random() * captchaTotal.length)]
       );
 
-    return captchaCreate;
+    return captchaResult;
   };
 
   return (
@@ -53,26 +59,26 @@ function Login() {
         Đăng nhập
       </h2>
       <div className="flex flex-col items-center w-[369px] h-[565px] absolute mt-8 left-[55.5px] gap-10">
-        <form className="w-full flex flex-col gap-10" onSubmit={loginPhone}>
+        <form className="w-full flex flex-col gap-10" onSubmit={funLogin}>
           <input
             type="text"
             placeholder="Số điện thoại"
-            className="w-full px-4 py-[9.5px] h-10 rounded-[10px] bg-[#141414] placeholder-[#8A8B93] text-[#8A8B93] text-base font-normal outline-none"
-            onChange={(e) => loginPhone(e.target.value)}
+            className="phoneState w-full px-4 py-[9.5px] h-10 rounded-[10px] bg-[#141414] placeholder-[#8A8B93] text-[#8A8B93] text-base font-normal outline-none"
+            onChange={(e) => setphoneState(e.target.value)}
           />
           <div className="relative">
             <input
               type="password"
               placeholder="********"
               className="w-full px-4 py-[9.5px] h-10 rounded-[10px] bg-[#141414] placeholder-[#8A8B93] text-[#8A8B93] text-base font-normal pr-16 outline-none after:content-['sdf'] after"
-              onChange={(e) => setinputPass(e.target.value)}
+              onChange={(e) => setpassState(e.target.value)}
             />
             <div className="absolute bottom-0 right-0 w-16 h-10 flex justify-center items-center">
               <Svg.ShowPass />
             </div>
           </div>
           {demoPass.map((get, index) => {
-            if (inputPass === get) {
+            if (passState === get) {
               return (
                 <p
                   key={index}
@@ -91,10 +97,13 @@ function Login() {
             />
             <div className="bg-white w-[132px] h-10 rounded-[10px] flex justify-center items-center">
               <span className="tracking-[6px] text-[21px] font-badscript font-bold">
-                {createCaptcha()}
+                {captchaCreate()}
               </span>
             </div>
-            <button className="flex-1 flex justify-center items-center">
+            <button
+              className="flex-1 flex justify-center items-center"
+              onClick={() => captchaCreate()}
+            >
               <Svg.Reset />
             </button>
           </div>
