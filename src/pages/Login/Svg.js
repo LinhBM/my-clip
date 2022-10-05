@@ -273,6 +273,111 @@ function LoginOtpInner() {
     </svg>
   );
 }
+
+function LoginOtpBarL() {
+  return (
+    <svg
+      width="95"
+      height="9"
+      viewBox="0 0 95 9"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        x="0.698242"
+        y="0.601562"
+        width="94.0685"
+        height="7.46575"
+        rx="2.9863"
+        fill="#47474D"
+      />
+    </svg>
+  );
+}
+
+function LoginOtpBarS() {
+  return (
+    <svg
+      width="65"
+      height="8"
+      viewBox="0 0 65 8"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        x="0.698242"
+        y="0.533203"
+        width="64.2055"
+        height="7.46575"
+        rx="2.9863"
+        fill="#47474D"
+      />
+    </svg>
+  );
+}
+
+function LoginOtpShield() {
+  return (
+    <svg
+      width="34"
+      height="38"
+      viewBox="0 0 34 38"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M0.904297 15.1546V4.12013C0.904297 3.72128 1.06099 3.33877 1.33991 3.05674C1.61884 2.77472 2.39159 2.61628 2.39159 2.61628L17.2645 0.150391L32.1374 2.61628C32.1374 2.61628 32.9102 2.77472 33.1891 3.05674C33.468 3.33877 33.6247 3.72128 33.6247 4.12013V15.1546C33.6247 30.9451 20.3692 36.1709 17.7293 37.0545C17.4294 37.1667 17.0996 37.1667 16.7997 37.0545C14.1598 36.1709 0.904297 30.9451 0.904297 15.1546Z"
+        fill="url(#paint0_linear_2049_85708)"
+      />
+      <path
+        d="M24.1738 12.5664L15.1394 21.5957L10.6299 17.081"
+        stroke="#272728"
+        stroke-width="2.9863"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <defs>
+        <linearGradient
+          id="paint0_linear_2049_85708"
+          x1="17.2645"
+          y1="0.150391"
+          x2="17.2645"
+          y2="51.6641"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stop-color="#B0B0B8" />
+          <stop offset="1" stop-color="#B0B0B8" stop-opacity="0" />
+        </linearGradient>
+      </defs>
+    </svg>
+  );
+}
+
+function LoginOtpBox() {
+  return (
+    <svg
+      width="24"
+      height="23"
+      viewBox="0 0 24 23"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        x="0.958984"
+        y="0.439453"
+        width="22.556"
+        height="22.556"
+        rx="2.2556"
+        fill="#47474D"
+      />
+      <path
+        d="M11.5783 15.4757L11.6881 12.604L9.13611 14.1443L8.47754 13.0478L11.1667 11.7164L8.47754 10.3849L9.13611 9.28846L11.6881 10.8287L11.5783 7.95703H12.8954L12.7857 10.8287L15.3376 9.28846L15.9962 10.3849L13.307 11.7164L15.9962 13.0478L15.3376 14.1443L12.7857 12.604L12.8954 15.4757H11.5783Z"
+        fill="white"
+      />
+    </svg>
+  );
+}
+
 export default {
   Close,
   ShowPass,
@@ -284,4 +389,10 @@ export default {
   LoginHeader,
   LoginHeaderInner,
   LoginBody,
+  LoginOtpBarL,
+  LoginOtpBarS,
+  LoginOtpBox,
+  LoginOtpContainer,
+  LoginOtpInner,
+  LoginOtpShield,
 };
