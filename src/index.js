@@ -12,6 +12,7 @@ import LoginPolicy from "./pages/Login/LoginPolicy";
 import LoginForgetPass from "./pages/Login/LoginForgetPass";
 import LoginLinkAccount from "./pages/Login/LoginLinkAccount";
 import LoginLayout from "./pages/Login/LoginLayout";
+import LoginOtp from "./pages/Login/LoginOtp";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -25,6 +26,7 @@ root.render(
             <Route path="loginpolicy" element={<LoginPolicy />} />
             <Route path="loginforgetpass" element={<LoginForgetPass />} />
             <Route path="loginlinkaccount" element={<LoginLinkAccount />} />
+            <Route path="loginotp" element={<LoginOtp />} />
             <Route path="*" element={<NoPage />} />
           </Route>
         </Routes>

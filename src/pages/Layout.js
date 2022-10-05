@@ -20,6 +20,9 @@ const Layout = () => {
           <li>
             <Link to="/loginlinkaccount">login link account</Link>
           </li>
+          <li>
+            <Link to="/loginotp">login otp</Link>
+          </li>
         </ul>
       </nav>
       <Outlet />

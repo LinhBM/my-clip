@@ -34,5 +34,5 @@ const slice = createSlice({
 });
 
 const { reducer, actions } = slice;
-export const { captcha, user } = actions;
+export const { user } = actions;
 export default reducer;
