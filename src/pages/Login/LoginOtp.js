@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import Svg from "./Svg";
+import { useSelector } from "react-redux";
 
-function Demnguoc(stateTime, setStateTime) {
+function Countdown(stateTime, setStateTime) {
   useEffect(() => {
     let index = stateTime;
     setInterval(() => {
@@ -17,8 +18,10 @@ function Demnguoc(stateTime, setStateTime) {
 }
 
 function LoginOtp() {
+  const storeLogin = useSelector((state) => state.storeLogin);
   const [stateTime, setStateTime] = useState(5);
-  Demnguoc(stateTime, setStateTime);
+  Countdown(stateTime, setStateTime);
+  storeLogin.map((get) => console.log(get));
 
   return (
     <div className="absolute w-[480px] h-[660px] top-0 right-0 bottom-0 left-0 m-auto bg-[#000000] border border-solid border-[#141414] rounded-2xl flex flex-col items-center">
@@ -82,12 +85,12 @@ function LoginOtp() {
         <input className="w-[52px] h-[52px] bg-[#141414] rounded-[5.2px]" />
         <input className="w-[52px] h-[52px] bg-[#141414] rounded-[5.2px]" />
       </div>
-      <a
-        href="#"
-        className="mt-4 font-inter not-italic font-bold text-[14px] leading-5 tracking-[-0.5px] text-[#D8D8DA]"
-      >
-        Gửi lại OTP &nbsp; {stateTime}
-      </a>
+      <div className="mt-4 font-inter not-italic font-bold text-[14px] leading-5 tracking-[-0.5px] text-[#D8D8DA]">
+        <a href="#" className="">
+          Gửi lại OTP
+        </a>
+        <span>&nbsp; {stateTime}</span>
+      </div>
       <button className="w-[369px] h-10 bg-[#272728] rounded-[10px] flex flex-row justify-center items-center mt-8">
         Xác nhận
       </button>
