@@ -1,9 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import Svg from "./Svg";
 
+function Demnguoc(stateTime, setStateTime) {
+  useEffect(() => {
+    let index = stateTime;
+    setInterval(() => {
+      if (index > 0) {
+        index = index - 1;
+        setStateTime(index);
+        console.log(index);
+      }
+    }, 1000);
+  }, []);
+}
+
 function LoginOtp() {
+  const [stateTime, setStateTime] = useState(5);
+  Demnguoc(stateTime, setStateTime);
+
   return (
     <div className="absolute w-[480px] h-[660px] top-0 right-0 bottom-0 left-0 m-auto bg-[#000000] border border-solid border-[#141414] rounded-2xl flex flex-col items-center">
       <h2 className="relative font-inter not-italic font-bold text-xl leading-6 tracking-[-0.26px] text-[#ffffff] mt-5 w-full flex justify-center items-center h-10">
@@ -70,7 +86,7 @@ function LoginOtp() {
         href="#"
         className="mt-4 font-inter not-italic font-bold text-[14px] leading-5 tracking-[-0.5px] text-[#D8D8DA]"
       >
-        Gửi lại OTP (5s)
+        Gửi lại OTP &nbsp; {stateTime}
       </a>
       <button className="w-[369px] h-10 bg-[#272728] rounded-[10px] flex flex-row justify-center items-center mt-8">
         Xác nhận
