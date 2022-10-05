@@ -11,7 +11,6 @@ function Login() {
   const [phoneState, setphoneState] = useState([]);
   const [passState, setpassState] = useState();
   const props = { name: phoneState, password: passState };
-  console.log("login", storeLogin);
 
   return (
     <div className="font-inter absolute w-[480px] h-[716px] bg-[#000000] border border-solid border-[#141414] rounded-2xl m-auto top-0 right-0 bottom-0 left-0">
