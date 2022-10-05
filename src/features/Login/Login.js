@@ -26,6 +26,8 @@ const slice = createSlice({
       if (index === 0) {
         console.log("sai so tai khoan");
         state.push({ check: false });
+      } else {
+        state.push({ check: true });
       }
     },
   },

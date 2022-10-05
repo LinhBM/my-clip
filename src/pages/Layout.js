@@ -9,7 +9,10 @@ const Layout = () => {
             <Link to="/">Login</Link>
           </li>
           <li>
-            <Link to="/loginpolicy">LoginPolicy</Link>
+            <Link to="/loginlayout">Login Layout</Link>
+          </li>
+          <li>
+            <Link to="/loginpolicy">Login Policy</Link>
           </li>
           <li>
             <Link to="/loginforgetpass">Forget Password</Link>

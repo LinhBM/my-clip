@@ -11,6 +11,7 @@ import Login from "./pages/Login/Login";
 import LoginPolicy from "./pages/Login/LoginPolicy";
 import LoginForgetPass from "./pages/Login/LoginForgetPass";
 import LoginLinkAccount from "./pages/Login/LoginLinkAccount";
+import LoginLayout from "./pages/Login/LoginLayout";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -20,6 +21,7 @@ root.render(
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Login />} />
+            <Route path="loginlayout" element={<LoginLayout />} />
             <Route path="loginpolicy" element={<LoginPolicy />} />
             <Route path="loginforgetpass" element={<LoginForgetPass />} />
             <Route path="loginlinkaccount" element={<LoginLinkAccount />} />

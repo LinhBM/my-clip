@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Svg from "./Svg";
 import InternetStatus from "./InternetStatus";
-import { type } from "@testing-library/user-event/dist/type";
 import { useDispatch, useSelector } from "react-redux";
 import { captcha } from "../../features/Captcha";
 
