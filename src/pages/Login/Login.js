@@ -7,11 +7,11 @@ import { captcha } from "../../features/Captcha";
 
 function Login() {
   const storeCaptcha = useSelector((state) => state.storeCaptcha);
+  const storeLogin = useSelector((state) => state.storeLogin);
   const dispatch = useDispatch();
   const [phoneState, setphoneState] = useState([]);
   const [passState, setpassState] = useState();
-  const demoPass = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  const numberPhone = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const props = { name: phoneState, password: passState };
 
   return (
     <div className="font-inter absolute w-[480px] h-[716px] bg-[#000000] border border-solid border-[#141414] rounded-2xl m-auto top-0 right-0 bottom-0 left-0">
@@ -37,13 +37,16 @@ function Login() {
               type="password"
               placeholder="********"
               className="w-full px-4 py-[9.5px] h-10 rounded-[10px] bg-[#141414] placeholder-[#8A8B93] text-[#8A8B93] text-base font-normal pr-16 outline-none after:content-['sdf'] after"
+              onChange={(e) => setpassState(e.target.value)}
             />
             <div className="absolute bottom-0 right-0 w-16 h-10 flex justify-center items-center">
               <Svg.ShowPass />
             </div>
           </div>
-          {demoPass.map((get, index) => {
-            if (passState === get) {
+          {storeLogin.map((get, index, event) => {
+            if (get.check === false) {
+              window.location.reload(false);
+
               return (
                 <p
                   key={index}
@@ -72,7 +75,7 @@ function Login() {
               <Svg.Reset />
             </button>
           </div>
-          <InternetStatus props={phoneState} />
+          <InternetStatus props={props} />
         </form>
         <span className="text-[#B0B0B8] not-italic font-normal text-base tracking-[-0.408px]">
           Hoặc đăng nhập bằng

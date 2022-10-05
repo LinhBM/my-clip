@@ -6,24 +6,27 @@ const slice = createSlice({
   reducers: {
     user: (state, action) => {
       const numberPhone = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-      const arr = [];
-      arr.push(action.payload);
+      const userArr = [
+        { name: 111, password: "admin@123" },
+        { name: 112, password: "admin@123" },
+        { name: 113, password: "admin@123" },
+      ];
 
-      arr.map((index) => {
-        let value = 0;
-        for (let i = 0; i < index.length; i++) {
-          for (let number = 0; number < numberPhone.length; number++) {
-            if (numberPhone[number] === +index[i]) {
-              value++;
-            }
-            console.log(index[i]);
-          }
-        }
+      for (let i = 0; i < action.payload.name.length; i++)
+        if (numberPhone.indexOf(+action.payload.name[i]) === -1)
+          console.log("Chỉ được nhập ký tự số");
 
-        if (value !== index.length) {
-          alert("phai nhập số điện thoại");
-        }
-      });
+      let index = 0;
+      for (let i = 0; i < userArr.length; i++)
+        if (
+          (userArr[i].name === +action.payload.name) &
+          (userArr[i].password === action.payload.password)
+        )
+          index++;
+      if (index === 0) {
+        console.log("sai so tai khoan");
+        state.push({ check: false });
+      }
     },
   },
 });

@@ -4,6 +4,7 @@ import { user } from "../../features/Login/Login";
 function InternetStatus(props) {
   const dispatch = useDispatch();
   if (window.navigator.onLine) {
+    const arr = { name: "linh", password: "123" };
     return (
       <button
         onClick={() => dispatch(user(props.props))}
