@@ -72,7 +72,7 @@ function LoginOtp() {
       >
         Gửi lại OTP (5s)
       </a>
-      <button className="w-[369px] h-10 bg-[#272728] rounded-[10px] flex flex-row justify-center items-center">
+      <button className="w-[369px] h-10 bg-[#272728] rounded-[10px] flex flex-row justify-center items-center mt-8">
         Xác nhận
       </button>
     </div>
