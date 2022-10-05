@@ -11,17 +11,16 @@ function LoginLayout() {
       boo = true;
     }
   });
-  console.log(boo);
 
   return (
     <div>
       {boo === true ? (
         <div>
-          (<LoginPolicy />)
+          <LoginPolicy />
         </div>
       ) : (
         <div>
-          (<Login />
+          <Login />
         </div>
       )}
     </div>
