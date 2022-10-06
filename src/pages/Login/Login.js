@@ -2,15 +2,21 @@ import { useState } from "react";
 import Svg from "./Svg";
 import InternetStatus from "./InternetStatus";
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 import { captcha } from "../../features/Captcha";
 
+import { getUser, userSelectors } from "../../features/Users/userSlice";
+
 function Login() {
-  const storeCaptcha = useSelector((state) => state.storeCaptcha);
-  const storeLogin = useSelector((state) => state.storeLogin);
   const dispatch = useDispatch();
+
+  const storeCaptcha = useSelector((state) => state.storeCaptcha);
+  const storeUser = useSelector(userSelectors.selectAll);
+  // const storeLogin = useSelector((state) => state.storeLogin);
+
   const [phoneState, setphoneState] = useState([]);
   const [passState, setpassState] = useState();
-  const props = { name: phoneState, password: passState };
+  const props = { username: phoneState, password: passState };
 
   return (
     <div className="font-inter absolute w-[480px] h-[716px] bg-[#000000] border border-solid border-[#141414] rounded-2xl m-auto top-0 right-0 bottom-0 left-0">
@@ -42,10 +48,8 @@ function Login() {
               <Svg.ShowPass />
             </div>
           </div>
-          {storeLogin.map((get, index, event) => {
-            if (get.check === false) {
-              window.location.reload(false);
-
+          {/* {storeUser.map((get, index) => {
+            if (phoneState !== get.username) {
               return (
                 <p
                   key={index}
@@ -55,7 +59,7 @@ function Login() {
                 </p>
               );
             }
-          })}
+          })} */}
 
           <div className="flex w-full gap-3">
             <input
