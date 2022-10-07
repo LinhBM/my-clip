@@ -46,8 +46,7 @@ function LoginLayout() {
       propsLoginLayout = true;
       if (
         state.username === user.username &&
-        state.password === user.password &&
-        state.status === false
+        state.password === user.password
       ) {
         userStatus = true;
       }

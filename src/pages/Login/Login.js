@@ -60,17 +60,6 @@ function Login(propsLoginLayout) {
     propsLogin.status = false;
   }
 
-  if (
-    phoneState.length > 0 &&
-    passState.length > 0 &&
-    captState.length > 0 &&
-    mail === ""
-  ) {
-    propsLogin.status = true;
-  }
-
-  console.log(propsLogin);
-
   return (
     <div className="font-inter absolute w-[480px] h-[716px] bg-[#000000] border border-solid border-[#141414] rounded-2xl m-auto top-0 right-0 bottom-0 left-0">
       <div className="absolute top-[22px] right-[22px]">
