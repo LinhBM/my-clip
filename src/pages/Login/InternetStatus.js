@@ -5,11 +5,8 @@ function InternetStatus(propsLogin) {
   const dispatch = useDispatch();
 
   const funBtn = () => {
+    dispatch(stateReceived([]));
     dispatch(stateAdd(propsLogin.propsLogin));
-    // if (propsLogin.propsLogin.status) {
-    //   console.log("hello");
-    //   dispatch(stateReceived([]));
-    // }
   };
 
   if (window.navigator.onLine) {

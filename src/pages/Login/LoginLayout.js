@@ -55,6 +55,7 @@ function LoginLayout() {
   });
 
   console.log(arrUsers);
+  console.log(storeState);
 
   return (
     <div>
