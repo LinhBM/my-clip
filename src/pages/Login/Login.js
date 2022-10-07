@@ -3,6 +3,7 @@ import Svg from "../Svg";
 import InternetStatus from "./InternetStatus";
 import { useDispatch, useSelector } from "react-redux";
 import { captcha } from "../../features/Captcha";
+import { faL } from "@fortawesome/free-solid-svg-icons";
 
 function Login(propsLoginLayout) {
   const dispatch = useDispatch();
@@ -16,30 +17,59 @@ function Login(propsLoginLayout) {
   const propsLogin = {
     username: phoneState,
     password: passState,
-    captcha: captState,
     status: false,
   };
 
-  let { checkCaptcha } = false;
+  let { checkCaptcha, checkPhone } = false;
   let mail = "";
   if (propsLoginLayout.propsLoginLayout) {
-    if (captState.length === 0) {
-      checkCaptcha = true;
-      mail = "Captcha chưa nhập";
-    } else {
-      checkCaptcha = false;
-    }
-    if (checkCaptcha == false) {
-      propsLogin.status = true;
-      mail = "Số điện thoại hoặc mật khẩu chưa chính xác.";
-    }
+    mail = "Số điện thoại hoặc mật khẩu chưa chính xác.";
   }
 
-  for (let i = 0; i < passState.length; i++) {
-    if (numberArr.indexOf(passState[i]) === -1) {
+  if (phoneState.length === 0) {
+    mail = "Chưa nhập số điện thoại";
+  }
+  for (let i = 0; i < phoneState.length; i++) {
+    if (
+      phoneState[i] < String.fromCharCode(48) ||
+      phoneState[i] > String.fromCharCode(57)
+    ) {
       mail = "Chỉ được phép nhập số điện thoại";
     }
   }
+
+  if (passState.length === 0) {
+    mail = "Chưa nhập mật khẩu";
+  }
+
+  if (captState.length === 0) {
+    mail = "Chưa nhập captcha";
+  }
+  if (captState.length > 0 && captState !== storeCaptcha) {
+    mail = "Captcha nhập sai";
+  }
+
+  if (
+    phoneState.length > 0 &&
+    passState.length > 0 &&
+    captState > 0 &&
+    mail.length === 0
+  ) {
+    propsLogin.status = true;
+  } else {
+    propsLogin.status = false;
+  }
+
+  if (
+    phoneState.length > 0 &&
+    passState.length > 0 &&
+    captState.length > 0 &&
+    mail === ""
+  ) {
+    propsLogin.status = true;
+  }
+
+  console.log(propsLogin);
 
   return (
     <div className="font-inter absolute w-[480px] h-[716px] bg-[#000000] border border-solid border-[#141414] rounded-2xl m-auto top-0 right-0 bottom-0 left-0">
