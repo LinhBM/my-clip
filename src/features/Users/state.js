@@ -1,6 +1,6 @@
 import { createSlice, createEntityAdapter } from "@reduxjs/toolkit";
 
-const stateAdapter = createEntityAdapter();
+const stateAdapter = createEntityAdapter({ selectId: (user) => user.username });
 
 const slice = createSlice({
   name: "linh",
@@ -17,6 +17,6 @@ const slice = createSlice({
 export const stateSelectors = stateAdapter.getSelectors(
   (state) => state.storeState
 );
-export const { stateAdd, stateReceived } = slice.actions;
+export const { stateAdd, stateReceived, stateUpdate } = slice.actions;
 
 export default slice.reducer;

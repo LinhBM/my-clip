@@ -19,12 +19,17 @@ const slice = createSlice({
         ...captchaLowcase,
       ];
 
-      const captchaResult = [];
+      let captchaResult = [];
 
-      for (let i = 0; i < 6; i++)
-        captchaResult.push(
-          captchaTotal[Math.floor(Math.random() * captchaTotal.length)]
-        );
+      // for (let i = 0; i < 6; i++)
+      //   captchaResult.push(
+      //     captchaTotal[Math.floor(Math.random() * captchaTotal.length)]
+      //   );
+
+      for (let i = 0; i < 6; i++) {
+        captchaResult +=
+          captchaTotal[Math.floor(Math.random() * captchaTotal.length)];
+      }
 
       state = captchaResult;
       return state;

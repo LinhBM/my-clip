@@ -1,22 +1,45 @@
 import { useState } from "react";
-import Svg from "./Svg";
+import Svg from "../Svg";
 import InternetStatus from "./InternetStatus";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
 import { captcha } from "../../features/Captcha";
 
-import { getUser, userSelectors } from "../../features/Users/userSlice";
-
-function Login() {
+function Login(propsLoginLayout) {
   const dispatch = useDispatch();
 
   const storeCaptcha = useSelector((state) => state.storeCaptcha);
-  const storeUser = useSelector(userSelectors.selectAll);
-  // const storeLogin = useSelector((state) => state.storeLogin);
 
   const [phoneState, setphoneState] = useState([]);
-  const [passState, setpassState] = useState();
-  const props = { username: phoneState, password: passState };
+  const [passState, setpassState] = useState([]);
+  const [captState, setCaptState] = useState([]);
+  const numberArr = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+  const propsLogin = {
+    username: phoneState,
+    password: passState,
+    captcha: captState,
+    status: false,
+  };
+
+  let { checkCaptcha } = false;
+  let mail = "";
+  if (propsLoginLayout.propsLoginLayout) {
+    if (captState.length === 0) {
+      checkCaptcha = true;
+      mail = "Captcha chưa nhập";
+    } else {
+      checkCaptcha = false;
+    }
+    if (checkCaptcha == false) {
+      propsLogin.status = true;
+      mail = "Số điện thoại hoặc mật khẩu chưa chính xác.";
+    }
+  }
+
+  for (let i = 0; i < passState.length; i++) {
+    if (numberArr.indexOf(passState[i]) === -1) {
+      mail = "Chỉ được phép nhập số điện thoại";
+    }
+  }
 
   return (
     <div className="font-inter absolute w-[480px] h-[716px] bg-[#000000] border border-solid border-[#141414] rounded-2xl m-auto top-0 right-0 bottom-0 left-0">
@@ -48,23 +71,18 @@ function Login() {
               <Svg.ShowPass />
             </div>
           </div>
-          {/* {storeUser.map((get, index) => {
-            if (phoneState !== get.username) {
-              return (
-                <p
-                  key={index}
-                  className="text-[#FF3B30] font-normal text-xs leading-[18px] text-center -mt-6"
-                >
-                  Số điện thoại hoặc mật khẩu chưa chính xác.
-                </p>
-              );
-            }
-          })} */}
-
+          {mail !== "" ? (
+            <p className="text-[#FF3B30] font-normal text-xs leading-[18px] text-center -mt-6">
+              {mail}
+            </p>
+          ) : (
+            ""
+          )}
           <div className="flex w-full gap-3">
             <input
               className="w-[177px] px-4 py-[9.5px] h-10 rounded-[10px] bg-[#141414] placeholder-[#8A8B93] text-[#8A8B93] text-base font-normal outline-none"
               placeholder="Mã captcha"
+              onChange={(e) => setCaptState(e.target.value)}
             />
             <div className="bg-white w-[132px] h-10 rounded-[10px] flex justify-center items-center">
               <span className="tracking-[6px] text-[21px] font-badscript font-bold">
@@ -78,7 +96,7 @@ function Login() {
               <Svg.Reset />
             </button>
           </div>
-          <InternetStatus props={props} />
+          <InternetStatus propsLogin={propsLogin} />
         </form>
         <span className="text-[#B0B0B8] not-italic font-normal text-base tracking-[-0.408px]">
           Hoặc đăng nhập bằng

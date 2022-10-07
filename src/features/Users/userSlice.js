@@ -12,6 +12,7 @@ export const getUser = createAsyncThunk("posts/getPost", async () => {
 
 const userAdapter = createEntityAdapter({
   // sortComparer: (a, b) => a.username.localeCompare(b.username),
+  selectId: (user) => user.username,
 });
 
 const sliceUser = createSlice({

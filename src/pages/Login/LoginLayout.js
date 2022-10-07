@@ -3,9 +3,8 @@ import Login from "./Login";
 import LoginPolicy from "./LoginPolicy";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { stateSelectors } from "../../features/state";
+import { stateSelectors } from "../../features/Users/state";
 import { userSelectors, getUser } from "../../features/Users/userSlice";
-import { faL } from "@fortawesome/free-solid-svg-icons";
 
 function LoginLayout() {
   const dispatch = useDispatch();
@@ -14,26 +13,57 @@ function LoginLayout() {
   }, []);
   const storeState = useSelector(stateSelectors.selectAll);
   const storeUsers = useSelector(userSelectors.selectAll);
-  let boo = false;
+  const storeCaptcha = useSelector((state) => state.storeCaptcha);
+  let propsLoginLayout = false;
+  let userStatus = false;
+
+  let arrUsers = [];
+
+  storeUsers.map((user) => {
+    let arrPhone = [];
+    for (let i = 0; i < user.phone.length; i++) {
+      if (
+        user.phone[i] !== "-" &&
+        user.phone[i] !== "(" &&
+        user.phone[i] !== ")" &&
+        user.phone[i] !== " " &&
+        user.phone[i] !== "."
+      ) {
+        if (user.phone[i] === "x") {
+          arrPhone = arrPhone + "0";
+        } else {
+          arrPhone = arrPhone + user.phone[i];
+        }
+      }
+    }
+
+    let arrResult = { username: arrPhone, password: user.email };
+    arrUsers.push(arrResult);
+  });
 
   storeState.map((state) => {
-    storeUsers.map((user) => {
-      if (state.username === user.username) {
-        boo = true;
+    arrUsers.map((user) => {
+      propsLoginLayout = true;
+      if (
+        state.username === user.username &&
+        state.password === user.password
+      ) {
+        userStatus = true;
       }
     });
   });
-  console.log(boo, storeState, storeUsers);
+
+  console.log(arrUsers);
 
   return (
     <div>
-      {boo ? (
+      {userStatus ? (
         <div>
           <LoginPolicy />
         </div>
       ) : (
         <div>
-          <Login />
+          <Login propsLoginLayout={propsLoginLayout} />
         </div>
       )}
     </div>

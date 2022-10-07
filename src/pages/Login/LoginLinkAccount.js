@@ -1,7 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
-import Svg from "./Svg";
+import Svg from "../Svg";
 import { useDispatch, useSelector } from "react-redux";
 import { captcha } from "../../features/Captcha";
 

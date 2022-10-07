@@ -1,13 +1,21 @@
 import { useDispatch } from "react-redux";
-import { user } from "../../features/Users/Login";
-import { stateAdd } from "../../features/state";
+import { stateAdd, stateReceived } from "../../features/Users/state";
 
-function InternetStatus(props) {
+function InternetStatus(propsLogin) {
   const dispatch = useDispatch();
+
+  const funBtn = () => {
+    dispatch(stateAdd(propsLogin.propsLogin));
+    // if (propsLogin.propsLogin.status) {
+    //   console.log("hello");
+    //   dispatch(stateReceived([]));
+    // }
+  };
+
   if (window.navigator.onLine) {
     return (
       <button
-        onClick={() => dispatch(stateAdd(props.props))}
+        onClick={() => funBtn()}
         type="submit"
         className="bg-[#00B6A0] text-[#ffffff] w-full h-10 rounded-[10px] text-base font-bold tracking-[-0.408px]"
       >

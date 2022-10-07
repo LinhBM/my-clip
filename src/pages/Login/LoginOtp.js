@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
-import Svg from "./Svg";
+import Svg from "../Svg";
 import { useSelector } from "react-redux";
 
 function Countdown(stateTime, setStateTime) {
