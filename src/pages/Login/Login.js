@@ -17,15 +17,23 @@ function Login(propsLoginLayout) {
   const propsLogin = {
     username: phoneState,
     password: passState,
+    captcha: captState,
     status: false,
   };
 
-  let { checkCaptcha, checkPhone } = false;
   let mail = "";
   if (propsLoginLayout.propsLoginLayout) {
     mail = "Số điện thoại hoặc mật khẩu chưa chính xác.";
   }
-
+  if (captState.length === 0) {
+    mail = "Chưa nhập captcha";
+  }
+  if (captState.length > 0 && captState !== storeCaptcha) {
+    mail = "Captcha nhập sai";
+  }
+  if (passState.length === 0) {
+    mail = "Chưa nhập mật khẩu";
+  }
   if (phoneState.length === 0) {
     mail = "Chưa nhập số điện thoại";
   }
@@ -38,52 +46,30 @@ function Login(propsLoginLayout) {
     }
   }
 
-  if (passState.length === 0) {
-    mail = "Chưa nhập mật khẩu";
-  }
-
-  if (captState.length === 0) {
-    mail = "Chưa nhập captcha";
-  }
-  if (captState.length > 0 && captState !== storeCaptcha) {
-    mail = "Captcha nhập sai";
-  }
-
-  if (
-    phoneState.length > 0 &&
-    passState.length > 0 &&
-    captState > 0 &&
-    mail.length === 0
-  ) {
-    propsLogin.status = true;
-  } else {
-    propsLogin.status = false;
-  }
-
   return (
     <div className="font-inter absolute w-[480px] h-[716px] bg-[#000000] border border-solid border-[#141414] rounded-2xl m-auto top-0 right-0 bottom-0 left-0">
       <div className="absolute top-[22px] right-[22px]">
         <Svg.Close />
       </div>
-      <h2 className="h-10 not-italic font-bold text-xl leading-6 flex items-center text-center tracking-[-0.26px] text-[#ffffff] mt-12 justify-center">
+      <h2 className="h-10 not-italic font-bold text-xl leading-6 flex items-center text-center tracking-[-0.26px] text-[#ffffff] mt-12 mb-10 justify-center">
         Đăng nhập
       </h2>
-      <div className="flex flex-col items-center w-[369px] h-[565px] absolute mt-8 left-[55.5px] gap-10">
+      <div className="flex flex-col items-center w-[369px] h-[575px] absolute left-[55.5px]">
         <form
-          className="w-full flex flex-col gap-10"
+          className="w-full flex flex-col"
           onSubmit={(e) => e.preventDefault()}
         >
           <input
             type="text"
             placeholder="Số điện thoại"
-            className="phoneState w-full px-4 py-[9.5px] h-10 rounded-[10px] bg-[#141414] placeholder-[#8A8B93] text-[#8A8B93] text-base font-normal outline-none"
+            className="phoneState w-full px-4 py-[9.5px] h-10 rounded-[10px] bg-[#141414] placeholder-[#8A8B93] text-[#8A8B93] text-base font-normal outline-none mb-4"
             onChange={(e) => setphoneState(e.target.value)}
           />
-          <div className="relative">
+          <div className="relative mb-4">
             <input
               type="password"
               placeholder="********"
-              className="w-full px-4 py-[9.5px] h-10 rounded-[10px] bg-[#141414] placeholder-[#8A8B93] text-[#8A8B93] text-base font-normal pr-16 outline-none after:content-['sdf'] after"
+              className="w-full px-4 py-[9.5px] h-10 rounded-[10px] bg-[#141414] placeholder-[#8A8B93] text-[#8A8B93] text-base font-normal pr-16 outline-none"
               onChange={(e) => setpassState(e.target.value)}
             />
             <div className="absolute bottom-0 right-0 w-16 h-10 flex justify-center items-center">
@@ -91,13 +77,13 @@ function Login(propsLoginLayout) {
             </div>
           </div>
           {mail !== "" ? (
-            <p className="text-[#FF3B30] font-normal text-xs leading-[18px] text-center -mt-6">
+            <p className="text-[#FF3B30] font-normal text-xs leading-[18px] text-center mb-10">
               {mail}
             </p>
           ) : (
             ""
           )}
-          <div className="flex w-full gap-3">
+          <div className="flex w-full gap-3 mb-10">
             <input
               className="w-[177px] px-4 py-[9.5px] h-10 rounded-[10px] bg-[#141414] placeholder-[#8A8B93] text-[#8A8B93] text-base font-normal outline-none"
               placeholder="Mã captcha"
@@ -115,12 +101,14 @@ function Login(propsLoginLayout) {
               <Svg.Reset />
             </button>
           </div>
-          <InternetStatus propsLogin={propsLogin} />
+          <div className="mb-10">
+            <InternetStatus propsLogin={propsLogin} />
+          </div>
         </form>
-        <span className="text-[#B0B0B8] not-italic font-normal text-base tracking-[-0.408px]">
+        <span className="text-[#B0B0B8] not-italic font-normal text-base tracking-[-0.408px] mb-10">
           Hoặc đăng nhập bằng
         </span>
-        <div className="flex gap-6">
+        <div className="flex gap-6 mb-10">
           <a href="#">
             <Svg.Facebook />
           </a>
@@ -128,7 +116,7 @@ function Login(propsLoginLayout) {
             <Svg.Google />
           </a>
         </div>
-        <div className="flex gap-x-4 not-italic font-bold text-sm text-[#00CDB4] tracking-[-0.5px] leading-5">
+        <div className="flex gap-x-4 not-italic font-bold text-sm text-[#00CDB4] tracking-[-0.5px] leading-5 mb-10">
           <a href="#" className="">
             Đăng ký
           </a>
